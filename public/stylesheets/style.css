@@ -1,0 +1,144 @@
+body { overflow-y: hidden;
+  padding: 50px;
+ /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+    color: white;
+background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/open24.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.well{
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1),rgba(0,0,0,0));
+    border: 1px solid transparent;
+    margin: 0 auto;
+    width: 500px;
+    min-height: 98%;
+    display: block;
+}
+.wrapper{  
+    transition-duration: 1s;
+}
+.well *{
+    margin: 0 auto;
+    margin-bottom: 70px;
+}
+.well h3{
+    text-shadow: 0 0 5px rgb(244,48,50), 0 0 10px rgb(244,48,50), 0 0 20px rgb(244,48,50), 0 0 30px rgb(244,48,50), 0 0 40px rgb(244,48,50), 0 0 55px rgb(244,48,50), 0 0 75px rgb(244,48,50);
+    
+    color:  white;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family:'Athiti',sans-serif;
+    font-weight: 200;
+    
+    font-size: 54px;
+    
+}
+.well h5{
+    text-shadow: 0 0 5px rgb(103,174,203), 0 0 10px rgb(103,174,203), 0 0 20px rgb(103,174,203), 0 0 30px rgb(103,174,203);
+    text-align: center;
+    font-family:'Grand Hotel',cursive;
+    font-size: 44px;
+    color:  white;
+    
+}
+
+
+.ticket{
+    
+     
+    padding: 5px;
+    width: 380px!important;
+    height:150px;
+    text-align: center;
+   
+    border-spacing: 10px;
+    
+}
+.ticket *{ 
+    border: 1px solid white;
+    user-select: none;
+    
+}
+.table tr{
+    margin-bottom: 15px;
+}
+.ticket tr td{
+    transition-duration: 1s;
+    
+    color: rgb(244,48,50);
+    border: 1px solid white;
+    min-width: 12px;
+    min-height: 12px;
+}
+
+.out{ 
+    color: white!important;
+    border: 1px solid white !important;
+}
+
+
+.SignInForm{
+    
+    
+    width: 500px;
+    vertical-align: bottom;
+    position: absolute;
+    top:20%;
+    display:grid;
+     
+}
+
+.SignInForm input[type="text"],input[type="password"]{
+    text-align: center;
+    border: none;
+    margin-bottom: 15px;
+    width: 50%;
+    border-radius: 5px;
+    padding: 5px;
+    
+   
+}
+
+.SignInForm input[type="submit"]{
+    border: none;
+    border-radius: 7px;
+    width: 50%;
+    padding: 5px;
+    cursor: pointer;
+    background: white;
+}
+
+
+
+table:hover{
+    transition-duration: 1s;
+    border-color: transparent;
+}
+table:hover> tbody tr .out{
+    opacity: 0;
+}
+table:hover> tbody tr .in{
+    border-color: transparent;
+}
+table tr:first-child:hover,table tr:last-child:hover{
+    cursor: pointer;
+}
+
+table tr:first-child:hover>td{
+    border-color: transparent;
+  
+     text-shadow: 0 0 5px rgb(103,174,203), 0 0 10px rgb(103,174,203), 0 0 20px rgb(103,174,203), 0 0 30px rgb(103,174,203),0 0 40px rgb(103,174,203),0 0 50px rgb(103,174,203);
+    color: white;
+}
+table tr:last-child:hover>td{
+    border-color: transparent;
+   
+    cursor: pointer;
+    text-shadow: 0 0 5px rgb(103,174,203), 0 0 10px rgb(103,174,203), 0 0 20px rgb(103,174,203), 0 0 30px rgb(103,174,203),0 0 40px rgb(103,174,203),0 0 50px rgb(103,174,203);
+   
+    color: white;
+}
