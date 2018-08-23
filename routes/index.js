@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req,res,next){
   console.log("Some fuck tried to post on index");
+  
   res.render('error');
 })
 

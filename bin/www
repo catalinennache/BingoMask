@@ -7,7 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('bingo:server');
 var http = require('http');
-
+var IService = require('./internal');
+ IService.pair();
 /**
  * Get port from environment and store in Express.
  */
@@ -20,7 +21,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+console.log(server.eventNames.toString);
 /**
  * Listen on provided port, on all network interfaces.
  */

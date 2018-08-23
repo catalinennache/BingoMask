@@ -8,9 +8,8 @@ var querystring = require('querystring');
 var session=require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var app = express();
-
+var test = require('./bin/internal');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -30,7 +29,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
  var i=0;
-//setInterval(function(){try{PostTest(36518)}catch(Exception){}},50);
+//setInterval(function(){try{PostTest(35300)}catch(Exception){}},2050);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
