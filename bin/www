@@ -3,12 +3,18 @@
 /**
  * Module dependencies.
  */
-
+var qs = require('querystring');
 var app = require('../app');
 var debug = require('debug')('bingo:server');
+var bp = require('body-parser');
 var http = require('http');
 var IService = require('./internal');
- IService.pair();
+IService.pair();
+var gameCore=require('./GameCore');
+
+
+
+ 
 /**
  * Get port from environment and store in Express.
  */
@@ -27,6 +33,15 @@ console.log(server.eventNames.toString);
  */
 
 server.listen(port);
+var chat = require('socket.io').listen(server);
+chat.on('connection',(socket)=>{
+  console.log("User connected to chat");
+  chat.sockets.emit('new_message',{message:"Welcome Pleya\' "});
+
+  socket.on('new_message',(data)=>{
+    chat.sockets.emit('new_message',{message:data.message});
+  })
+})
 server.on('error', onError);
 server.on('listening', onListening);
 

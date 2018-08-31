@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Bingo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/stylesheets/main.css" />
+		<link rel="stylesheet" href="/stylesheets/home.css" />
+		<noscript><link rel="stylesheet" href="/stylesheets/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><strong style="user-select:none;">BitBingo</strong></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="" id="top">Home</a></li>
+							<li>
+								<a href="#" style="display:none;">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option 1</a></li>
+											<li><a href="#">Option 2</a></li>
+											<li><a href="#">Option 3</a></li>
+											<li><a href="#">Option 4</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							
+						<!--	<% if(true){ %>
+								<h1>foo</h1>
+							  <% } else{ %>  
+								<h1>bar</h1>
+							 <% } %> -->
+							  
+							 <% if (user) { %>
+								<li><a href="#two" id="play">Play Bingo</a></li>
+								<li><a><%= user%></a></li>
+								<li><a href="/logout" class="button primary">Log Out</a></li>
+							<% } else {%>   
+								<li><a href="#" class="button primary">Sign Up</a></li>
+								 <% } %>
+						
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>BitBingo</h2>
+							<p>Not the hero we want<br />
+							But the hero we need</p>
+						</header>
+						<% if(!user) { %>
+							<span class="image">
+							<div class="loginwrp">
+							<form method="POST" action="/">
+							<input type="email" id="si-email" name="email" placeholder="Email">
+							<input type="password" id="si-pass" name="pass" placeholder="Password">
+							<input type="submit" value="Log In" style="margin-right:30%;" class="button primary login"> 
+						</form></div></span><% } %>
+					</div>
+				<!--	<a href="#one" class="goto-next scrolly">Next</a> -->
+				</section>
+
+	
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+						<div class="gameroom">
+								<div class="card" id="ticket">
+									<table>
+										<tr> <td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td>
+										</tr>
+										<tr> <td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td>
+										</tr>
+										<tr> <td></td><td></td>
+											<td>&cross;</td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td>
+										</tr>
+									</table>
+								</div>
+								<div class="card" id="userticket"><table>
+										<tr> <td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td>
+										</tr>
+										<tr> <td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td>
+										</tr>
+										<tr> <td></td><td></td>
+											<td>&cross;</td><td></td>
+											<td></td><td></td>
+											<td></td><td></td>
+											<td></td>
+										</tr>
+									</table></div>
+								<div class="card" id="chatbox"> 
+								<div class="chat"><ul></ul></div>
+								<div class="controls"><input type="text">
+									<input type="button" value="send"></div>
+								</div></div>
+					<span class="image fit main"><img src="images/pic03.jpg" alt=""/></span>
+					
+					<div class="content">
+						<header>
+							<h2>Game Log</h2>
+						<!--	<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
+						--></header>
+							<ul class="actions logs">
+							
+						</ul>
+					</div>
+				<!--	<a href="#three" class="goto-next scrolly">Next</a>-->
+				</section>
+
+			<!-- Three -->
+			
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="/javascripts/jquery.min.js"></script>
+			<script src="/javascripts/jquery.scrolly.min.js"></script>
+			<script src="/javascripts/jquery.dropotron.min.js"></script>
+			<script src="/javascripts/jquery.scrollex.min.js"></script>
+			<script src="/javascripts/browser.min.js"></script>
+			<script src="/javascripts/breakpoints.min.js"></script>
+			<script src="/javascripts/util.js"></script>
+			<script src="/javascripts/main.js"></script>
+			<script src="/javascripts/gameroom.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+			<script> 
+				document.getElementById('top').addEventListener('click',function(){
+					window.location.reload();
+				})
+				document.getElementById('play').addEventListener('click',function(){
+				  setTimeout(()=>{	let culprit = document.getElementById('banner');
+					if(culprit)	culprit.parentElement.removeChild(culprit);
+				},500)
+				$('#play').toggle();
+				enterGame();
+			});
+			</script>
+			<script>
+				window.onload = function(){window.scrollTo(0, 0);}
+			</script>
+
+	</body>
+</html>

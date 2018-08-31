@@ -1,0 +1,120 @@
+body{
+  overflow-y: hidden;
+}
+body * {
+    user-select: none;
+}
+#header{
+    position: fixed!important;
+    top:0;
+    left:0;
+    background-color: #272833!important;
+}
+
+.logs {
+    display: block!important;
+    height: 70%;
+    overflow-y: auto;
+}
+.gameroom{
+    position: absolute;
+    top:50px;
+    left: 40px;
+    max-width: 70%;
+}
+ .card{
+    background-color: #272833;
+    height: 150px;
+    min-width: 300px;
+    margin:20px;
+    margin-top:30px;
+    display: inline-block;
+    float: left;
+
+ }
+ #chatbox{
+     float:unset;
+      
+    width:713px;
+    min-height: 278px;
+    
+ }
+ #chatbox .chat{
+     height: 70%;
+     width: 97%;
+      
+     margin: 0 auto;
+     margin-top: 5px;
+     margin-bottom: 5px;
+
+    
+ }
+ #chatbox controls{
+     position: absolute;
+     left: 0;
+     bottom: 5px;
+     width: 95%;
+     display: inline-block;
+     padding: 10px;
+     outline: none;
+ }
+ #chatbox input[type="text"]{
+     padding: 5px;
+     width:80%;
+     float: left;
+     height:unset;
+     margin-left: 10px;
+
+ }
+ #chatbox input[type="button"]{
+    outline: none;
+     
+     
+     background: black;
+     float: right;
+     margin-bottom: 5px;
+     margin-right: 10px;
+     height: 2.5em!important;
+     line-height: unset!important;
+      
+ }
+ #ticket table {
+     border-left:  solid 1px rgba(255, 255, 255, 0.3);
+     border-right: solid 1px rgba(255, 255, 255, 0.3);
+ }
+ #ticket table td{
+        margin:1px;
+        table-layout: fixed;
+        text-align: center;
+        
+ }
+  
+.loginwrp{
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.loginwrp * {
+    display: block;
+    margin:0 auto;
+    margin-top:  1em;
+    margin-bottom: 0.5em;
+}
+.login{
+    clear: both;
+    float: unset;
+    position: relative;
+    display: inline-block;
+    z-index: 500;
+    margin: 0 auto;
+}
+@media screen and (max-width: 980px){
+        .loginwrp{top:10px;}
+        .loginwrp input[type="submit"]{
+            padding: 0 1.75em;
+            margin: 0 auto!important;
+        }
+
+}
