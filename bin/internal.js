@@ -1,9 +1,7 @@
 'use strict'
 var querystring = require('querystring');
 var httpService = require('http');
-
-
-console.log("PARSED")
+ 
 class TaskQue {
 
 
@@ -23,9 +21,9 @@ class TaskQue {
         var task = JSON.parse(JSON.stringify(this.taskBluePrint));
         task.id = this.generateUID();
         task.code = OperationCode;
-        console.log(task);
+        console.log("Adding task :",task);
         let datakeys = Object.keys(data);
-        console.log(datakeys);
+        
         for (let i in datakeys) {
             task[datakeys[i]] = data[datakeys[i]];
         }
@@ -73,11 +71,10 @@ class TaskQue {
     }
     processGroundResult(result) {
         let hndIDS = Object.keys(this.GroundHandlers);
-        console.log(hndIDS);
-        console.log(result, result.task_id);
+        
         for (let j in hndIDS) {
             if (hndIDS[j] == result.task_id) {
-                console.log("Found listener");
+                
                 // console.log(this.GroundHandlers[hndIDS[j]].toString());
                 this.GroundHandlers[hndIDS[j]](result);
 
@@ -119,7 +116,7 @@ class InternalService {
         this.GroundConnector = httpService.createServer();
         this.setUp(this.GroundConnector);
         this.paired = false;
-        console.log("SERVICE CREATED")
+         
     }
 
     async pair() {
@@ -259,7 +256,7 @@ class InternalService {
 
     Post(Port, data, callback) {
         var post_data = querystring.stringify(data);
-        console.log("POST PARAMS: "+post_data)
+       
         var post_options = {
             host: 'localhost',
             port: Port,
@@ -297,7 +294,7 @@ class InternalService {
         });
 
         request.on('end', function () {
-            console.log(body);
+           
             post = body;
           //  console.log(post, "THIS IS POST");
             finished = true;
@@ -327,7 +324,7 @@ class InternalService {
         });
 
         request.on('end', function () {
-            console.log(body,'post');
+             
             post = querystring.parse(body);
          //   console.log(post, "THIS IS POST");
             finished = true;

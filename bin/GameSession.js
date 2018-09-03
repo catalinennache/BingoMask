@@ -12,9 +12,9 @@ module.exports = class GameSession {
 
         this.ticket;
         this.balls = [];
-        this.UserReceivedBall = [[],[]]
-        
-    
+        this.UserReceivedBall = [[], []]
+
+
     }
 
     addPeer(user_session, ticket) {
@@ -32,14 +32,15 @@ module.exports = class GameSession {
     }
 
     P1() {
-        return new Promise(resolve => setTimeout(resolve, 1000 * 10));
+        this.startChatSession();
+        return new Promise(resolve => setTimeout(resolve, 1000 * 30));
     }
 
     P2(ticket) {
-        
+
         this.ticket = ticket;
         this.balls = this.arrangeBalls(ticket);
-         
+
         this.lifeCycle_Flags[this.lifeCycle_index] = true;
         this.lifeCycle_index++;
     }
@@ -48,53 +49,106 @@ module.exports = class GameSession {
 
         this.lifeCycle_Flags[this.lifeCycle_index] = true;
         this.lifeCycle_index++;
+        this.destroyChatSession();
+        return new Promise(resolve => setTimeout(resolve, 1000 * 60 * 1));
     }
-    setCurrentBall(ball){
+    setCurrentBall(ball) {
         this.currentball = ball;
-        this.UserReceivedBall[this.currentball]=ball;
+        this.UserReceivedBall[this.currentball] = ball;
 
     }
-    isCBDepleted(){
+    isCBDepleted() {
         this.UserReceivedBall
         this.peers;
         return this.UserReceivedBall[this.currentball].lenght == this.peers.length;
     }
-    deplete(){
-        let diff = this.peers.length - this.UserReceivedBall[this.currentball].lenght ;
-        for(let j=0;j<diff;j++)
-                this.UserReceivedBall.push("depleted");
+    deplete() {
+        let diff = this.peers.length - this.UserReceivedBall[this.currentball].lenght;
+        for (let j = 0; j < diff; j++)
+            this.UserReceivedBall.push("depleted");
     }
     arrangeBalls(ticket) {
-      let balls = [];
-        for(let i=0;i<3;i++)
-            for(let j=0;j<9;j++)
-                 balls.push(ticket[""+i+""+j+""]);
+        let balls = [];
+        for (let i = 0; i < 3; i++)
+            for (let j = 0; j < 9; j++) {
+            balls["" + i + "" + j] = (ticket["" + i + "" + j]);
+                console.log("Added ball " + ("" + i + "" + j) + " with value " + ticket["" + i + "" + j])
+            }
         return balls;
     }
     extractBallFor(token) {
-        this.UserReceivedBall[this.currentball].constructor !== Array ? this.UserReceivedBall[this.currentball] =[]:{};
-      let peerIndex =  this.peers.findIndex((obj)=>{
-                if(obj.token == token)
-                        return true;
+        this.UserReceivedBall[this.currentball].constructor !== Array ? this.UserReceivedBall[this.currentball] = [] : {};
+        let peerIndex = this.peers.findIndex((obj) => {
+            if (obj.token == token)
+                return true;
         })
 
-       if(this.UserReceivedBall[this.currentball].includes(token) && this.UserReceivedBall[this.currentball].lenght < this.peers.length)
-                return {ready:false};
-              else{ !this.UserReceivedBall[this.currentball] ? this.UserReceivedBall[this.currentball] =[]:{};
-                  this.UserReceivedBall[this.currentball].push(token);
-                return {number:this.balls[this.currentball]};
-              }  
+        if (this.UserReceivedBall[this.currentball].includes(token) && this.UserReceivedBall[this.currentball].lenght < this.peers.length)
+            return { ready: false };
+        else {
+            !this.UserReceivedBall[this.currentball] ? this.UserReceivedBall[this.currentball] = [] : {};
+            this.UserReceivedBall[this.currentball].push(token);
+            return { number: this.balls[this.currentball], index: this.currentball };
+        }
     }
 
     isP1Locked() {
         return this.lifeCycle_Flags[0];
     }
-    getPhase(){
+    getPhase() {
         return this.lifeCycle_index;
     }
 
-    getChatURL(){
+    getChatURL() {
         return "N/A";
+    }
+
+    startChatSession() {
+        this.chat = require('socket.io').listen(2000);
+        this.chat.on('connection', (socket) => {
+            let init_params = this.parseGetParams(socket.request.url);
+           if(init_params['token'] && this.checkTokenValidity(init_params['token'])){
+            console.log("Socket Connection Accepted !! ")
+            // chat.sockets.send({message:"Welcome playa\'"})
+            socket.emit('new_message', { emittor: "Server", message: "Welcome Player " });
+            //chat.emit('new_message',{message:"Welcome Pleya\' "});
+
+            socket.on('new_message', (data) => {
+                console.log(data);
+                this.chat.emit('new_message', { emittor: data.emittor, message: data.message });
+            })
+        }else{ console.log("Blocked suspicious connection.",this.peers);
+            socket.emit('new_message', { emittor: "Server", message: "Access Denied!" });
+            socket.disconnect();
+        }});
+    }
+    destroyChatSession(){
+        this.chat.close();
+    }
+    
+    parseGetParams(url){
+         
+        let urlQuery = url.split('?');
+        urlQuery = urlQuery[urlQuery.length-1];
+        let params ={};
+        let seq = urlQuery.split("&");
+        for( let i in seq){
+            let pair = seq[i].split('=');
+            params[pair[0]]=pair[1];
+        }
+        console.log(params);
+        return params;
+    } 
+    checkTokenValidity(token){
+        // checks for ticket token, not the user_token
+        // ticket token limits the validity period down to a single game session
+        
+       let res = this.peers.find(function(object){
+                if(object.ticket.token == token)
+                    return true;
+        });
+
+        return res ? true : false;
     }
 
 }

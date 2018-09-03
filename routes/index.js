@@ -63,9 +63,13 @@ router.post('/enterGame', function (req, res, next) {
       console.log("ticket generated for ",req.session.userToken);
 
       if (gameSess.addPeer(userSess.userToken, ticket)) {
+        let middleman = JSON.stringify(ticket);
+        let tck = JSON.parse(middleman);
+        let token = tck.token;
+        delete tck.token;
         console.log("Peer added");
        
-        res.send(JSON.stringify({ ticket: ticket, chatSocket: gameSess.getChatURL() }));
+        res.send(JSON.stringify({ gsess_token: token, ticket: tck, chatSocket: gameSess.getChatURL() }));
         res.end();
       }else
     {
@@ -102,7 +106,8 @@ router.post('/update', function (req, res, next) {
 
   switch (phase) {
     case 0: {
-      res.writeHead(451);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify({error:true,reason:0}));
       res.end();
     } break;
 
@@ -113,7 +118,7 @@ router.post('/update', function (req, res, next) {
       if (ball.number) {
         res.setHeader('Content-Type', 'application/json');
         
-        res.send(JSON.stringify({error:false, ball: ball.number }));
+        res.send(JSON.stringify({error:false, ball: ball.number, index:ball.index }));
         res.end();
       } else {
         res.send(JSON.stringify({ error: true }));
@@ -122,6 +127,9 @@ router.post('/update', function (req, res, next) {
     } break;
 
     case 2: {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify({error:true,reason:2}));
+      res.end();
         
     }
   }

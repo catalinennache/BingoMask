@@ -13,7 +13,7 @@ body * {
 
 .logs {
     display: block!important;
-    height: 70%;
+    height: 85%;
     overflow-y: auto;
 }
 .gameroom{
@@ -40,14 +40,17 @@ body * {
     
  }
  #chatbox .chat{
-     height: 70%;
+     height: 80%;
      width: 97%;
-      
+     overflow-y:auto; 
      margin: 0 auto;
      margin-top: 5px;
      margin-bottom: 5px;
 
     
+ }
+ ::-webkit-scrollbar{
+     display: none;
  }
  #chatbox controls{
      position: absolute;
@@ -78,14 +81,16 @@ body * {
      line-height: unset!important;
       
  }
- #ticket table {
+ .card table {
      border-left:  solid 1px rgba(255, 255, 255, 0.3);
      border-right: solid 1px rgba(255, 255, 255, 0.3);
  }
- #ticket table td{
+ .card table td{
         margin:1px;
         table-layout: fixed;
         text-align: center;
+        height: 50px;
+        min-width: 40px;  
         
  }
   

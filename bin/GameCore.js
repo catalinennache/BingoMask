@@ -10,29 +10,30 @@ setTimeout(
             CurrentGameSession ? delete CurrentGameSession : {};
             let id = GenerateGameID();
             CurrentGameSession = new GameSession_BluePrint(id, IService);
-            console.log("Game Session started with ID: "+id);
-
+            console.log("Game Session started with ID: " + id);
+            console.log("Awaiting players.");
             await CurrentGameSession.P1();
             console.log("Game Session LOCKED!");
             console.log("Receiveing Ticket... ");
             var ticket_promise = await IService.GenerateTicket();
             console.log(ticket_promise);
             CurrentGameSession.P2(ticket_promise);
-
-            for (let i = 0; i < 28; i++) {
-                console.log("Parsing ball "+i);
-                CurrentGameSession.setCurrentBall(i);
-                var awaitings = 0;
-                while (awaitings < 30 && !CurrentGameSession.isCBDepleted()) {
-                    await someTime();
-                    awaitings++;
+            console.log("Begining ball parsing");
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 3; j++) {
+                    CurrentGameSession.setCurrentBall(""+j+""+i);
+                    var awaitings = 0;
+                    while (awaitings < 30 && !CurrentGameSession.isCBDepleted()) {
+                        await someTime();
+                        awaitings++;
+                    }
+                    if (!CurrentGameSession.isCBDepleted()) CurrentGameSession.deplete();
                 }
-                if (!CurrentGameSession.isCBDepleted()) CurrentGameSession.deplete();
-                
-                    
-            }
 
-            CurrentGameSession.P3();
+            }
+            console.log("Ball parsing finished");
+
+            await CurrentGameSession.P3();
             console.log("Game session ended");
         }
 
