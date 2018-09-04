@@ -5,191 +5,296 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Bingo</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/stylesheets/main.css" />
-		<link rel="stylesheet" href="/stylesheets/home.css" />
-		<noscript><link rel="stylesheet" href="/stylesheets/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload landing">
-		<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><strong style="user-select:none;">BitBingo</strong></h1>
-					<nav id="nav">
+<head>
+	<title>Bingo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/stylesheets/main.css" />
+	<link rel="stylesheet" href="/stylesheets/home.css" />
+	<noscript>
+		<link rel="stylesheet" href="/stylesheets/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload landing">
+	<div id="snackbar"></div>
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo"><strong style="user-select:none;">BitBingo</strong></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="" id="top">Home</a></li>
+					<li>
+						<a href="#" style="display:none;">Layouts</a>
 						<ul>
-							<li><a href="" id="top">Home</a></li>
+							<li><a href="left-sidebar.html">Left Sidebar</a></li>
+							<li><a href="right-sidebar.html">Right Sidebar</a></li>
+							<li><a href="no-sidebar.html">No Sidebar</a></li>
 							<li>
-								<a href="#" style="display:none;">Layouts</a>
+								<a href="#">Submenu</a>
 								<ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
+									<li><a href="#">Option 1</a></li>
+									<li><a href="#">Option 2</a></li>
+									<li><a href="#">Option 3</a></li>
+									<li><a href="#">Option 4</a></li>
 								</ul>
 							</li>
-							
-						<!--	<% if(true){ %>
+						</ul>
+					</li>
+
+					<!--	<% if(true){ %>
 								<h1>foo</h1>
 							  <% } else{ %>  
 								<h1>bar</h1>
 							 <% } %> -->
-							  
-							 <% if (user) { %>
-								<li><a href="#two" id="play">Play Bingo</a></li>
-								<li><a><%= user%></a></li>
-								<li><a href="/logout" class="button primary">Log Out</a></li>
-							<% } else {%>   
-								<li><a href="#" class="button primary">Sign Up</a></li>
-								 <% } %>
-						
-						</ul>
-					</nav>
+
+					<% if (user) { %>
+						<li><a href="#two" id="play">Play Bingo</a></li>
+						<li><a><%= user%></a></li>
+						<li><a href="/logout" class="button primary">Log Out</a></li>
+						<% } else {%>
+							<li><a href="#" class="button primary sup">Sign Up</a></li>
+							<% } %>
+
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<header>
+					<h2>BitBingo</h2>
+					<p>Not the hero we want<br /> But the hero we need</p>
 				</header>
-
-			<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>BitBingo</h2>
-							<p>Not the hero we want<br />
-							But the hero we need</p>
-						</header>
-						<% if(!user) { %>
-							<span class="image">
-							<div class="loginwrp">
+				<% if(!user) { %>
+					<span class="image">
+						<div class="loginwrp">
 							<form method="POST" action="/">
-							<input type="email" id="si-email" name="email" placeholder="Email">
-							<input type="password" id="si-pass" name="pass" placeholder="Password">
-							<input type="submit" value="Log In" style="margin-right:30%;" class="button primary login"> 
-						</form></div></span><% } %>
+								<input type="email" id="si-email" name="email" placeholder="Email">
+								<input type="password" id="si-pass" name="pass" placeholder="Password">
+								<input type="submit" value="Log In" style="margin-right:30%;" class="button primary login">
+							</form>
+						</div>
+						<div class="loginwrp" style="display:none; ">
+							<form method="POST" action="">
+								<input type="text" id="nick" name="nick" placeholder="NickName">
+								<input type="email" id="su-email" name="email" placeholder="Email">
+								<input type="password" id="su-pass" name="pass" placeholder="Password">
+								<input type="password" id="su-passconf" name="passconf" placeholder="Password Confirm">
+								<input type="submit" value="Sign Up" style="margin-right:30%;" class="button primary login">
+							</form>
+						</div>
+						<script>
+							let btn = document.getElementsByClassName('sup')[0];
+							btn.addEventListener('click', function (ev) {
+								if (ev.target.innerHTML == "Sign Up") {
+									document.getElementsByClassName('loginwrp')[0].style.display = "none";
+									document.getElementsByClassName('loginwrp')[1].style.display = "block";
+									document.getElementsByClassName('image')[0].style.height = "25em";
+									ev.target.innerHTML = "Log In";
+								} else {
+									document.getElementsByClassName('loginwrp')[1].style.display = "none";
+									document.getElementsByClassName('loginwrp')[0].style.display = "block";
+									ev.target.innerHTML = "Sign Up";
+									document.getElementsByClassName('image')[0].style.height = "18em";
+								}
+							})
+
+							document.getElementById('nick').addEventListener('change', function (ev) {
+								if (ev.target.value != "") {
+									if (ev.target.value.length > 2) {
+										$.ajax({
+											type: "post",
+											url: "http://localhost:3000/check",
+											data: { nick: ev.target.value },
+											success: function (data) {
+												console.log(data, data['available'], data['available'] == 1);
+
+												if (data['available'] == 1) {
+													document.getElementById('nick').style.border = "1px solid green";
+													document.getElementById('nick').title = "";
+												} else {
+													document.getElementById('nick').style.border = "1px solid red";
+													document.getElementById('nick').title = "Nick Name is already in use.";
+													let toast = document.getElementById('snackbar')
+													toast.innerHTML = data['message'];
+													toast.className = "show";
+													setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+
+												}
+											}
+
+										})
+									} else {
+										document.getElementById('nick').style.border = "1px solid red";
+										document.getElementById('nick').title = "Nick Name is too short.";
+									}
+								} else {
+									document.getElementById('nick').style.border = "solid 1px rgba(255, 255, 255, 0.3)";
+
+								}
+							})
+						</script>
+					</span><% } %>
+			</div>
+			<!--	<a href="#one" class="goto-next scrolly">Next</a> -->
+		</section>
+
+
+		<!-- Two -->
+		<section id="two" class="spotlight style2 right">
+			<div class="gameroom">
+				<div class="wrapper">
+					<div class="card tck" id="ticket">
+						<table>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
 					</div>
-				<!--	<a href="#one" class="goto-next scrolly">Next</a> -->
-				</section>
-
-	
-			<!-- Two -->
-				<section id="two" class="spotlight style2 right">
-						<div class="gameroom">
-								<div class="card" id="ticket">
-									<table>
-										<tr> <td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td>
-										</tr>
-										<tr> <td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td>
-										</tr>
-										<tr> <td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td>
-										</tr>
-									</table>
-								</div>
-								<div class="card" id="userticket"><table>
-										<tr> <td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td>
-										</tr>
-										<tr> <td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td>
-										</tr>
-										<tr> <td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td><td></td>
-											<td></td>
-										</tr>
-									</table></div>
-								<div class="card" id="chatbox"> 
-								<div class="chat"><ul id="chatcontent"></ul></div>
-								<div class="controls"><input type="text" id="caption">
-									<input type="button" value="send" id="send" disabled></div>
-								</div></div>
-					<span class="image fit main"><img src="images/pic03.jpg" alt=""/></span>
-					
-					<div class="content">
-						<header>
-							<h2>Game Log</h2>
-						<!--	<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
-						--></header>
-							<ul class="actions logs">
-							
-						</ul>
+					<div class="card tck" id="userticket">
+						<table>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
 					</div>
-				<!--	<a href="#three" class="goto-next scrolly">Next</a>-->
-				</section>
+				</div>
+				<div class="card" id="chatbox">
+					<div class="chat">
+						<ul id="chatcontent"></ul>
+					</div>
+					<div class="controls"><input type="text" id="caption">
+						<input type="button" value="send" id="send" disabled></div>
+				</div>
+			</div>
+			<span class="image fit main"><img src="images/pic03.jpg" alt="" /></span>
 
-			<!-- Three -->
-			
+			<div class="content">
+				<header>
+					<h2>Game Log</h2>
+					<!--	<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
+						-->
+				</header>
+				<ul class="actions logs">
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+				</ul>
+			</div>
+			<!--	<a href="#three" class="goto-next scrolly">Next</a>-->
+		</section>
 
-		</div>
+		<!-- Three -->
 
-		<!-- Scripts -->
-			<script src="/javascripts/jquery.min.js"></script>
-			<script src="/javascripts/jquery.scrolly.min.js"></script>
-			<script src="/javascripts/jquery.dropotron.min.js"></script>
-			<script src="/javascripts/jquery.scrollex.min.js"></script>
-			<script src="/javascripts/browser.min.js"></script>
-			<script src="/javascripts/breakpoints.min.js"></script>
-			<script src="/javascripts/util.js"></script>
-			<script src="/javascripts/main.js"></script>
-			<script src="/javascripts/gameroom.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-			<script src="/javascripts/recon.js"></script>
-			<script> 
-				document.getElementById('top').addEventListener('click',function(){
-					window.location.reload();
-				})
-				document.getElementById('play').addEventListener('click',function(){
-				  setTimeout(()=>{	let culprit = document.getElementById('banner');
-					if(culprit)	culprit.parentElement.removeChild(culprit);
-				},500)
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/jquery.scrolly.min.js"></script>
+	<script src="/javascripts/jquery.dropotron.min.js"></script>
+	<script src="/javascripts/jquery.scrollex.min.js"></script>
+	<script src="/javascripts/browser.min.js"></script>
+	<script src="/javascripts/breakpoints.min.js"></script>
+	<script src="/javascripts/util.js"></script>
+	<script src="/javascripts/main.js"></script>
+	<script src="/javascripts/gameroom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+	<script src="/javascripts/recon.js"></script>
+	<script> 
+		document.getElementById('top').addEventListener('click', function () {
+			window.location.reload();
+		})
+			<% if (user) {%> document.getElementById('play').addEventListener('click', function () {
+				setTimeout(() => {
+					let culprit = document.getElementById('banner');
+					if (culprit) culprit.parentElement.removeChild(culprit);
+				}, 500)
 				$('#play').toggle();
 				enterGame();
-			});
-			</script>
-			<script>
-				window.onload = function(){window.scrollTo(0, 0);}
-			</script>
+			}); <% } %>
+	</script>
 
-	</body>
+
+
+</body>
+
 </html>

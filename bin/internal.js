@@ -232,6 +232,35 @@ class InternalService {
 
     }
 
+    CheckNickname(nickname){
+        let task = this.GroundReg.TaskQue.addTask("3",{nickname:nickname});
+
+        this.Post(this.GroundReg.PortPipe, task, function (res) {
+            console.log("SENT TO GROUND");
+            if (res.statusCode == 200) {
+                
+
+            }
+        });
+
+
+        return this.getGroundResp(task)
+    }
+
+    Register(nickname,email,password,passconf){
+        let task = this.GroundReg.TaskQue.addTask("2",{nickname:nickname,email:email,password:password,passconf:passconf});
+
+        this.Post(this.GroundReg.PortPipe, task, function (res) {
+            console.log("SENT TO GROUND");
+            if (res.statusCode == 200) {
+                
+
+            }
+        });
+
+        return this.getGroundResp(task);
+    }
+
 
 
     getGroundResp(task) {
@@ -276,7 +305,7 @@ class InternalService {
         // post the data
         post_req.write(post_data);
         post_req.end();
-
+        console.log("POSTED "+data);
 
     }
 

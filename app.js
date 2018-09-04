@@ -8,6 +8,7 @@ var querystring = require('querystring');
 var session=require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var errDictionary = require('./routes/errdic')
 var app = express();
   
 var test = require('./bin/internal');
@@ -29,6 +30,7 @@ app.use(session({
 app.use(express.static(__dirname + '/public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/errdic',errDictionary);
  var i=0;
 //setInterval(function(){try{PostTest(35300)}catch(Exception){}},2050);
 

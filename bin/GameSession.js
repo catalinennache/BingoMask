@@ -33,7 +33,7 @@ module.exports = class GameSession {
 
     P1() {
         this.startChatSession();
-        return new Promise(resolve => setTimeout(resolve, 1000 * 30));
+        return new Promise(resolve => setTimeout(resolve, 1000 * 60*2));
     }
 
     P2(ticket) {
