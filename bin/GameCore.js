@@ -19,21 +19,18 @@ setTimeout(
             console.log(ticket_promise);
             CurrentGameSession.P2(ticket_promise);
             console.log("Begining ball parsing");
-            for (let i = 0; i < 9; i++) {
-                for (let j = 0; j < 3; j++) {
-                    CurrentGameSession.setCurrentBall(""+j+""+i);
-                    var awaitings = 0;
-                    while (awaitings < 30 && !CurrentGameSession.isCBDepleted()) {
-                        await someTime();
-                        awaitings++;
-                    }
-                    if (!CurrentGameSession.isCBDepleted()) CurrentGameSession.deplete();
+            while(CurrentGameSession.isDepleted != -1){
+                    
+                    await someTime();
+                    CurrentGameSession.extractBall();
+
                 }
 
-            }
+            
             console.log("Ball parsing finished");
 
             await CurrentGameSession.P3();
+            CurrentGameSession.destroyChatSession();
             console.log("Game session ended");
         }
 
@@ -46,7 +43,7 @@ function GenerateGameID() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 5; i++)
+    for (var i = 0; i < 19; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
@@ -54,7 +51,8 @@ function GenerateGameID() {
 }
 
 function someTime() {
-    return new Promise(resolve => setTimeout(resolve, 100));
+    let someTime = Math.floor(Math.random()*7000); // asteapta intre 0 si 7 secunde
+    return new Promise(resolve => setTimeout(resolve, someTime));
 }
 module.exports = {
     getGSession: function () {

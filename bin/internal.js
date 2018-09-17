@@ -216,6 +216,20 @@ class InternalService {
         return this.getCoreResp(task)
     }
 
+    Generate6pack(){
+        let task = this.CoreReg.TaskQue.addTask("2", {});
+        console.log(task);
+        this.Post(this.CoreReg.PortPipe, task, function (res) {
+            if (res.statusCode == 200) {
+                console.log("SENT TO CORE");
+
+            }
+        });
+
+
+        return this.getCoreResp(task)
+    }
+
     AuthenticateUser(email, password) {
         let task = this.GroundReg.TaskQue.addTask("1", { email: email, password: password });
         console.log(task);

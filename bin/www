@@ -11,6 +11,8 @@ var http = require('http');
 var IService = require('./internal');
 IService.pair();
 var gameCore=require('./GameCore');
+console.log(gameCore.getGSession());
+console.log("zzzzzzzzzzzzzzzzzzz");
 
 
 
