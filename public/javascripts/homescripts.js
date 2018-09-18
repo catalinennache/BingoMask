@@ -39,7 +39,7 @@ document.getElementById('nick').addEventListener('change', function (ev) {
         if (ev.target.value.length > 2) {
             $.ajax({
                 type: "post",
-                url: "http://86.123.134.100/check",
+                url: "http://86.123.134.100:3000/check",
                 data: { nick: ev.target.value },
                 success: function (data) {
                     console.log(data, data['available'], data['available'] == 1);

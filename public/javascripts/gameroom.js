@@ -52,7 +52,7 @@ function setupTicket(ticket) {
 function update() {
     $.ajax({
         type: "post",
-        url: "http://86.123.134.100/update",
+        url: "http://86.123.134.100:3000/update",
         success: function (data) {
 
             console.log(data);
@@ -92,7 +92,7 @@ function openSocket(bearer) {
     // if user is running mozilla then use it's built-in WebSocket
     window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-    var connection = new io('ws://localhost:2000?token=' + bearer);
+    var connection = new io('ws://86.123.134.100:2000?token=' + bearer);
     document.getElementById('send').disabled = false;
 
     let listener = function (ev) {
