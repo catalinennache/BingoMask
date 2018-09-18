@@ -19,7 +19,7 @@ function enterGame() {
 
     /*$.ajax({
         type: "POST",
-        url: "http://localhost:3000/entergame",
+        url: "http://86.123.134.100:3000/entergame",
         data: {},
         success: function (data)*/
     {
@@ -52,7 +52,7 @@ function setupTicket(ticket) {
 function update() {
     $.ajax({
         type: "post",
-        url: "http://localhost:3000/update",
+        url: "http://86.123.134.100/update",
         success: function (data) {
 
             console.log(data);

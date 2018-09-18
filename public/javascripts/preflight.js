@@ -8,11 +8,11 @@ function enterGame() {
   let data = assembleData();
   $.ajax({
     type: "post",
-    url: "http://localhost:3000/preflight/go",
+    url: "http://86.123.134.100/preflight/go",
     data: {params: data},
     success: function (data) {
       if (data['goodtogo']) {
-        window.location.href = "http://localhost:3000/gameroom";
+        window.location.href = "http://86.123.134.100/gameroom";
       } else {
         window.toaster.toast("Something went wrong, please try again.");
         document.getElementById('go').disabled = false;
@@ -59,7 +59,7 @@ $(window).on('load', initContext());
 function initContext() {
   $.ajax({
     type: "post",
-    url: "http://localhost:3000/preflight/init",
+    url: "http://86.123.134.100/preflight/init",
     data: {},
     success: function (data) {
       window.pack_token = data['tickets']['pack_token'];
@@ -124,7 +124,7 @@ function regenerateTickets() {
 
   $.ajax({
     type: "post",
-    url: "http://localhost:3000/preflight/regenerate",
+    url: "http://86.123.134.100/preflight/regenerate",
     data: {},
     success: function (data) {
       window.pack_token = data['tickets']['pack_token'];
