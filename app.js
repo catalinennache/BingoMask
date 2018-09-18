@@ -13,13 +13,18 @@ var errDictionary = require('./routes/errdic')
 var preflightRouter = require('./routes/preflight.js');
 var gameroomRouter = require('./routes/gameroom.js');
 var app = express();
-  
+var cors  = require('cors');
+var corsOptions = {
+    origin: 'http://86.123.134.100:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 var test = require('./bin/internal');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
