@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+ 
+
+<html>
+
+<head>
+	<title>Bingo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/stylesheets/main.css" />
+	<link rel="stylesheet" href="/stylesheets/home.css" />
+	<link rel="stylesheet" href="/stylesheets/preflight.css" />
+	<noscript>
+		<link rel="stylesheet" href="/stylesheets/noscript.css" /></noscript>
+
+		
+</head>
+
+<body class="landing is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo"><strong style="user-select:none;">BitBingo</strong></h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="/" id="top">Home</a></li>
+					<li>
+						<a href="#" style="display:none;">Layouts</a>
+						<ul>
+							<li><a href="left-sidebar.html">Left Sidebar</a></li>
+							<li><a href="right-sidebar.html">Right Sidebar</a></li>
+							<li><a href="no-sidebar.html">No Sidebar</a></li>
+							<li>
+								<a href="#">Submenu</a>
+								<ul>
+									<li><a href="#">Option 1</a></li>
+									<li><a href="#">Option 2</a></li>
+									<li><a href="#">Option 3</a></li>
+									<li><a href="#">Option 4</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<!--	<% if(true){ %>
+								<h1>foo</h1>
+							  <% } else{ %>  
+								<h1>bar</h1>
+							 <% } %> -->
+
+					<% if (user) { %>
+					 
+					<li><a href="/user">
+							<%= user%></a></li>
+					<li><a href="/logout" class="button primary">Log Out</a></li>
+					<% } else {%>
+					<li><a href="#" class="button primary sup">Sign Up</a></li>
+					<% } %>
+
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+			<div id="main" class="wrapper style1" style="min-height: 500px;">
+				<div class="container">
+					<header class="major">
+					 
+						<p>Game ID : <%= info.gameId %></p>
+						<script>window.gameId = "<%= info.gameId%>"</script>
+					</header>
+					<div class="row gtr-150">
+						<div class="col-8 col-12-medium">
+
+							<!-- Content -->
+								<section id="content">
+									<div class="panel">
+											
+												 
+
+									</div>
+								</section>
+
+						</div>
+						<div class="col-4 col-12-medium">
+
+							<!-- Sidebar -->
+								<section id="sidebar">
+									<div class="group">
+									<h3>Tickets Sold : <%= info.tickets_sold %></h3>
+									<h3>BingoWin Prize : <%= info.BingoWin %> </h3>
+									<h3>BingoLine Prize : <%= info.BingoLine %> </h3>
+									<h3>Ticket Price: 100 &mu;Ƀ </h3>
+									  <script>var test = new Date("<%= timmer %>") </script>
+								  
+									</div>
+									<div class="main-example">
+									<div class="countdown-container" id="countdown"></div>
+									</div>
+									<div class="bar">
+								   <input type="button" class="button-primary" id="regen" value="Regenerate Tickets">
+								   <input type="button" class="button-primary" id="go" value="Enter Game">
+									</div>
+								</section>
+								 
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+
+	</div>
+
+	<!-- Scripts -->
+		<script src="javascripts/jquery.min.js"></script>
+		<script src="javascripts/jquery.scrolly.min.js"></script>
+		<script src="javascripts/jquery.dropotron.min.js"></script>
+		<script src="javascripts/jquery.scrollex.min.js"></script>
+		<script src="javascripts/browser.min.js"></script>
+		<script src="javascripts/breakpoints.min.js"></script>
+		<script src="javascripts/util.js"></script>
+		<script src="javascripts/main.js"></script>
+		<script src="javascripts/snck.js"></script>
+		<script src="javascripts/countdown.js"></script>
+		<script src="javascripts/preflight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+</body>
+
+
+
+</html>

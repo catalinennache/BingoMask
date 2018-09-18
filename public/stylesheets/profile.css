@@ -1,0 +1,105 @@
+body{
+    overflow-x:hidden;
+}
+/* ----- SideBar ------- */
+.major {
+    display: none;
+}
+#sidebar{
+    width: 200px;
+    border-right:2px solid #e44c65;
+    min-height: 400px;
+   
+}
+
+.clist{
+    position: relative;
+    list-style: none;
+    height: 400px;
+}
+
+.clist li{
+    height: 30%;
+    width: 100%;
+   
+  
+}
+.clist li span{
+    display: inline-block;
+   
+    font-size: 24px;
+    font-weight: 300;
+    user-select: none;
+    cursor: pointer;
+    width: 100%;
+    transition-duration: 1s;
+    text-align:center;
+}
+.active{
+    color: #e44c65;
+}
+.active:hover{
+     
+    
+    border-bottom: none!important;
+
+}
+.clist li span:hover{
+    color: #e44c65;
+    
+    border-bottom: 1px solid rgba(39, 40, 51, 0.965);
+  
+}
+/*--- Content ---- */
+
+.cntnt{
+    position: absolute;
+    left: 230px;
+    width: 80%;
+    min-height: 400px;
+    
+}
+.cntnt form{
+   
+    display: block;
+    margin:0 auto;
+    width: 80%;
+    height: 100%;   
+    display: block;
+    
+}
+.bottomBar{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    
+    
+}
+.cntnt form input[type="submit"]{
+    color: white;
+    background-color:#e44c65; 
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    height: 2em;
+    line-height: 2em;
+    padding: 0 1.25em;
+}
+.cntnt form input[type="submit"]:hover{
+    color: white!important;
+    background-color: #f55d76;
+    outline: none;
+}
+
+.field{
+    margin:0 auto;
+    display: inline-block;
+    margin-left: 2em;
+}
+.field *{
+    text-align: center;
+    display: block;
+}
+.vanished{
+    display: none;
+}

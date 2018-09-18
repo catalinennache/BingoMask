@@ -1,0 +1,221 @@
+.content header span {
+     
+    padding: 5px;
+    display: inline-block;
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+.content header span:first-child:hover, .content header span:last-child:hover{
+        color: white;
+        text-shadow: 0px 0px 5px  white
+   
+}
+.content header span:first-child, .content header span:last-child {
+     cursor: pointer;
+     color:#bbb;
+}
+.content ul{
+    position: relative;
+    margin-top:10%;
+    margin-bottom: 0px;
+    height: 90%;
+   list-style: none;
+   padding: 0;
+}
+.content ul li{padding: 0;}
+
+.active{
+    color:white!important;
+}
+.hidden{
+    display: none!important;
+
+}
+#chatbox .controls{
+    position: relative;
+     
+    width: 99%;
+    display: inline-block;
+    
+    outline: none;
+}
+#chatbox input[type="text"]{
+    padding: unset;
+    width:80%;
+    float: left;
+    height:unset;
+    margin-left: 10px;
+
+}
+#chatbox input[type="button"]{
+   outline: none;
+    
+    
+    background: black;
+    float: right;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    height: 1.9em!important;
+    line-height: unset!important;
+     
+}
+
+
+#chatbox{
+    float:unset;
+   width:800px;
+   height: 29%;
+   margin: 0 auto;
+    
+
+}
+#chatbox .chat{
+    height: 72%;
+    width: 97%;
+    overflow-y:auto; 
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+   
+}
+
+.gameroom{
+    position: absolute;
+    top:55px;
+    left: 0px;
+    max-width: 100%;
+    width: 70%;
+    height: 90%;
+     
+ 
+}
+.gameroom .wrapper{
+    padding:0; 
+    width:100%;
+    height: 60%;
+   
+
+}
+.gameroom .tck {
+    display: inline-block;
+    margin: 0 auto;
+   
+}
+
+#board{
+    display: block!important;
+    width: 800px!important;
+    
+    min-height: 250px; 
+    margin:0 auto;
+    margin-top:30px;
+
+}
+#board div{
+    position: relative;
+    display: inline-block;
+    height:100%;
+    width: 21.9%;
+    margin:0 auto;
+    
+}
+#board div:first-child{
+    width:44%;
+}
+.panel .card{
+
+    margin-left:10px!important;
+    max-width: 364px;
+    float: left!important;
+
+}
+
+
+.panel .card div{
+    width:100%;
+}
+#board div:last-child {
+    width: 29%;
+}
+#board div:first-child{
+    float: left;
+}
+#board div:last-child{
+    float:right;
+}
+
+#board div:nth-child(2) span{
+    position: relative;
+    display: inline-block;
+    height:50%;
+    width:100%;
+    margin-top:30%;
+    font-size: 104px;
+    line-height:120%;
+    text-align: center;
+    vertical-align: middle;
+    border:1px dotted white;
+    
+}
+#board div:nth-child(3) ul{
+    position: relative;
+    list-style: none;
+    text-align: center;
+    height: 100%;
+  
+     
+}
+#board div:nth-child(3) ul li{
+        margin-bottom: 5%;
+}
+#board div:nth-child(3) ul li:first-child{
+    margin-top: 13%;
+}
+#board div:nth-child(3) ul li:last-child{
+    margin:0;
+}
+#mytickets{
+    overflow-y:scroll;
+}
+#mytickets li{
+    margin-bottom: 10px;
+}
+#mytickets .card {
+    
+    zoom: 0.8;
+}
+
+
+#board .tck table{
+    margin-top: 12%;
+}
+#board .tck {
+    
+    position: relative;
+    zoom:0.85;
+    width:100%!important;
+}
+
+
+.tck {
+    display: inline-block;
+    margin: 0 auto;
+}
+.tck table{
+    margin:0;
+}
+  
+ .id{ max-height:50px;
+     width: 100%!important;
+     border-bottom: 1px solid grey!important;
+     border-left: 1px solid grey!important;
+     border-right: 1px solid grey!important;
+ }
+ .id h4{
+     padding: 5px;
+     margin:0 auto;
+      
+ }
